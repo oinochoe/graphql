@@ -57,11 +57,13 @@ export const resolvers = {
 				content,
 				id: notes.length + 1,
 			};
+			console.log(notes);
 			cache.writeData({
 				data: {
 					notes: [newNote, ...notes],
 				},
 			});
+			return newNote;
 		},
 	},
 };

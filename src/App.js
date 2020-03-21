@@ -6,7 +6,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Query query={GET_NOTES}>{() => null}</Query>
+				{/* <Query query={GET_NOTES}>{() => null}</Query> */}
 			</div>
 		);
 	}
