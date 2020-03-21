@@ -15,20 +15,20 @@ export const typeDefs = [
 	`
     schema {
         query: Query
-        mutation : Mutation
+        mutation: Mutation
     }
     type Query {
         notes: [Note]!
         note(id: Int!): Note
     }
     type Mutation{
-        createNote(title: String!, content: String!) : Note
-        editNote(id: String!, title: String!, content:String!) : Note
+        createNote(title: String!, content: String!): Note
+        editNote(id: Int!, title: String, content:String): Note
     }
-    type Note {
-        id:Int!
-        title:String!
-        content:String!
+    type Note{
+        id: Int!
+        title: String!
+        content: String!
     }
     `,
 ];
@@ -49,7 +49,7 @@ export const resolvers = {
 	},
 	Mutation: {
 		createNote: (_, variables, { cache }) => {
-			const notes = cache.readQuery({ query: GET_NOTES });
+			const { notes } = cache.readQuery({ query: GET_NOTES });
 			const { title, content } = variables;
 			const newNote = {
 				__typename: "Note",
@@ -57,7 +57,6 @@ export const resolvers = {
 				content,
 				id: notes.length + 1,
 			};
-			console.log(notes);
 			cache.writeData({
 				data: {
 					notes: [newNote, ...notes],
