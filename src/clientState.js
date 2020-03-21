@@ -1,8 +1,17 @@
+import { NOTE_FRAGMENT } from "./fragments";
+
 export const defaults = {
-  notes: []
+	notes: [
+		{
+			__typename: "Note", // local에서 작업 시 무조건 필요함.
+			id: 1,
+			title: "First",
+			content: "Second",
+		},
+	],
 };
 export const typeDefs = [
-  `
+	`
     schema {
         query: Query
         mutation : Mutation
@@ -20,10 +29,19 @@ export const typeDefs = [
         title:String!
         content:String!
     }
-    `
+    `,
 ];
+
 export const resolvers = {
-  Query: {
-    notes: () => []
-  }
+	Mutation: {},
+	Query: {
+		note: (_, variables, { cache }) => {
+			const id = cache.config.dataIdFromObject({
+				__typename: "Note",
+				id: variables.id,
+			});
+			const note = cache.readFragment({ fragment: NOTE_FRAGMENT, id });
+			return note;
+		},
+	},
 };
