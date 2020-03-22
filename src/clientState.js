@@ -7,7 +7,7 @@ export const defaults = {
 			__typename: "Note", // local에서 작업 시 무조건 필요함.
 			id: 1,
 			title: "First",
-			content: "Second",
+			content: "- Second",
 		},
 	],
 };
