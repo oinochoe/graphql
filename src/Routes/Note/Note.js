@@ -30,7 +30,7 @@ export default class Note extends React.Component {
 		return (
 			<Query query={GET_NOTE} variables={{ id }}>
 				{({ data }) =>
-					data.note ? (
+					data ? (
 						<>
 							<TitleComponent>
 								<Title>{data.note && data.note.title}</Title>
