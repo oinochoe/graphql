@@ -91,7 +91,7 @@ export default class NotesContainer extends React.Component {
 							data.notes
 								? data.notes.map(note => (
 										<Link
-											to={`/edit/${note.id}`}
+											to={`/note/${note.id}`}
 											key={note.id}
 										>
 											<Note>

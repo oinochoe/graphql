@@ -5,9 +5,6 @@ import Note from "../../Routes/Note";
 import Edit from "../../Routes/Edit";
 import Add from "../../Routes/Add";
 
-import { Query } from "react-apollo";
-import { GET_NOTES } from "../../queries";
-
 class App extends Component {
 	render() {
 		return (
