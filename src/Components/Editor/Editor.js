@@ -6,30 +6,54 @@ import TextareaAutosize from "react-textarea-autosize";
 const TitleInput = styled(TextareaAutosize)`
 	font-size: 50px;
 	font-weight: 600;
-	width: 100%;
+	width: calc(100% - 80px);
+	resize: none;
+	border: 3px solid #333;
 	&::placeholder {
 		font-weight: 600;
+		font-size: 50px;
 	}
 `;
 
 const ContentPreview = styled.div`
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-gap: 50px;
+	grid-template-columns: repeat(1, 1fr);
+	grid-gap: 20px;
 `;
 
 const ContentInput = styled(TextareaAutosize)`
-	font-size: 18px;
+	width: 100%;
+	font-size: 16px;
 	margin-top: 15px;
+	resize: none;
+	border: 3px solid #333;
+	padding: 10px;
+	margin-top: 10px;
+	box-sizing: border-box;
+	&::placeholder {
+		font-size: 16px;
+	}
 `;
 
 const TitleContainer = styled.div`
 	display: flex;
 	align-items: center;
-	margin-bottom: 50px;
 `;
 
-const Button = styled.button``;
+const Button = styled.button`
+	display: block;
+	width: 80px;
+	height: 69px;
+	margin-left: 10px;
+	border: 3px solid #333;
+	color: #333;
+	font-size: 16px;
+	cursor: pointer;
+	&:hover {
+		background: #333;
+		color: #fff;
+	}
+`;
 
 export default class Editor extends React.Component {
 	constructor(props) {
@@ -51,7 +75,7 @@ export default class Editor extends React.Component {
 						placeholder={"Untitled..."}
 						name={"title"}
 					/>
-					<Button onClick={this._onSave}>Save</Button>
+					<Button onClick={this._onSave}>저장</Button>
 				</TitleContainer>
 				<ContentPreview>
 					<ContentInput
