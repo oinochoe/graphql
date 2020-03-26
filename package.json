@@ -47,7 +47,7 @@
 			"last 1 safari version"
 		]
 	},
-	"homepage": "https://oinochoe.github.io/GraphQL",
+	"homepage": "http://oinochoe.github.io/GraphQL",
 	"devDependencies": {
 		"gh-pages": "^2.2.0"
 	}
