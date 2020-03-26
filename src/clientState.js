@@ -1,16 +1,11 @@
 import { NOTE_FRAGMENT } from "./fragments";
 import { GET_NOTES } from "./queries";
+import { saveNotes } from "./offline";
 
 export const defaults = {
-	notes: [
-		{
-			__typename: "Note", // local에서 작업 시 무조건 필요함.
-			id: 1,
-			title: "First",
-			content: "- Second",
-		},
-	],
+	notes: [],
 };
+
 export const typeDefs = [
 	`
     schema {
@@ -62,6 +57,7 @@ export const resolvers = {
 					notes: [newNote, ...notes],
 				},
 			});
+			saveNotes(cache);
 			return newNote;
 		},
 		editNote: (_, { id, title, content }, { cache }) => {
@@ -85,6 +81,7 @@ export const resolvers = {
 				content,
 				data: updatedNote,
 			});
+			saveNotes(cache);
 			return updatedNote;
 		},
 	},
